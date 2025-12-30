@@ -98,6 +98,90 @@ prisma.ts で singleton パターンを使用
 - 離脱率: 18%
 ```
 
+### PRの運用例（チェック → レビュー知見化 → 次回改善）
+
+#### PRを作る前（最低限）
+
+1. `docs/reviews/tags/` を確認（同じ指摘を繰り返さないため）
+2. 変更が機能単位なら、該当の `docs/features/{feature}/` を更新
+3. 変更が大きい場合は、イテレーション記録を残す
+
+例:
+
+```text
+docs/reviews/tags/react-hooks.md
+docs/features/user-auth/README.md
+docs/features/user-auth/changelog.md
+docs/features/user-auth/iterations/v0.3-refresh-token.md
+```
+
+#### レビューで指摘を受けたら（次回の自動回避に繋げる）
+
+1. 指摘が汎用的なら `docs/reviews/tags/{category}.md` に追記
+2. 頻出化しているなら `steering/review-rules.md` にも反映
+
+例（レビュー指摘の蓄積）:
+
+````markdown
+# docs/reviews/tags/naming.md
+
+## 指摘: booleanの命名
+
+### 問題のコード
+```ts
+const open = true;
+```
+
+### 修正後のコード
+```ts
+const isOpen = true;
+```
+````
+
+#### マージ後（またはPR作成直前）
+
+1. 解決した問題があれば `docs/troubleshooting/` に残す
+2. 再利用できる実装なら `docs/patterns/` に残す
+3. 変更点の意図・影響を `docs/features/{feature}/changelog.md` に残す
+
+### 新機能を追加するときの手順例（Spec → 実装 → ドキュメント）
+
+#### 1) 仕様（Spec）を用意
+
+- `.kiro/specs/{feature}/requirements.md`
+- `.kiro/specs/{feature}/design.md`
+
+#### 2) Featureドキュメントの雛形を作成
+
+テンプレート:
+
+- `docs/_templates/feature/README.md`
+- `docs/_templates/feature/changelog.md`
+- `docs/_templates/iteration.md`
+
+作成例:
+
+```text
+docs/features/user-auth/README.md
+docs/features/user-auth/changelog.md
+docs/features/user-auth/iterations/v0.1-initial.md
+```
+
+#### 3) 実装中に起きた問題は、その場で残す
+
+```text
+docs/troubleshooting/YYYY-MM-DD-{issue-name}.md
+```
+
+#### 4) 実装完了時にイテレーション記録を更新
+
+`docs/_templates/iteration.md` に沿って、最低限以下を埋めるのがコツです。
+
+- Before / After
+- テスト結果
+- 学び
+- 発生した問題（`docs/troubleshooting/` へのリンク）
+
 ## Hooks
 
 | Hook | Trigger | Description |
