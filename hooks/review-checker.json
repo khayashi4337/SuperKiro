@@ -1,0 +1,14 @@
+﻿{
+  "name": "Review Checker",
+  "description": "保存時にレビュー頻出指摘を事前チェック",
+  "version": "1",
+  "enabled": true,
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "steering/review-rules.md と docs/reviews/tags/ を参照し、このファイルにレビューで指摘されそうな問題がないかチェックしてください。問題があれば具体的な修正案を提示してください。特に以下の観点を重視してください: 1) エラーハンドリング 2) 型安全性 3) パフォーマンス 4) セキュリティ"
+  }
+}

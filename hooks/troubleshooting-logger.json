@@ -1,0 +1,14 @@
+﻿{
+  "name": "Troubleshooting Logger",
+  "description": "エラー解決時に自動でdocs/troubleshooting/に記録を促す",
+  "version": "1",
+  "enabled": true,
+  "when": {
+    "type": "fileEdited",
+    "patterns": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx", "!**/*.test.*", "!**/*.spec.*"]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "このファイルの変更内容を確認してください。もしエラー修正やバグ修正であれば、docs/troubleshooting/ に解決記録を追記することを提案してください。記録する場合は docs/_templates/troubleshooting.md のテンプレートを使用してください。ファイル名は YYYY-MM-DD-{issue-name}.md 形式にしてください。"
+  }
+}
