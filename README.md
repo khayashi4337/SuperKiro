@@ -33,6 +33,15 @@ cp -r hooks/* YOUR_PROJECT/.kiro/hooks/
 cp -r docs/* YOUR_PROJECT/docs/
 ```
 
+### 初回設定
+
+プロジェクトの前提に合わせて、以下のファイル（コピー先: `YOUR_PROJECT/.kiro/steering/`）を編集する必要があります：
+- `steering/project-profile.md`
+- `steering/coding-standards.md`
+- `steering/review-rules.md`
+
+`steering/initial-setup.md` で初回設定を行うことで、チームの開発スタイルに合わせたルールを適用できます。
+
 ## Directory Structure
 
 ```
@@ -41,6 +50,8 @@ SuperKiro/
 ├── README.md             # このファイル
 ├── steering/             # ステアリングファイル
 │   ├── coding-standards.md
+│   ├── initial-setup.md
+│   ├── project-profile.md
 │   ├── review-rules.md
 │   └── knowledge-workflow.md
 ├── hooks/                # 自動化フック
@@ -191,9 +202,11 @@ docs/troubleshooting/YYYY-MM-DD-{issue-name}.md
 
 ## Customization
 
-1. `steering/coding-standards.md` をプロジェクトの規約に編集
-2. `steering/review-rules.md` にチーム固有の指摘パターンを追加
-3. `docs/_templates/` のテンプレートを必要に応じてカスタマイズ
+1. `steering/initial-setup.md` を実施して、前提（言語/レビュー方式/運用方針）を整理
+2. `steering/project-profile.md` に回答を残す
+3. `steering/coding-standards.md` をプロジェクトの規約に編集
+4. `steering/review-rules.md` にチーム固有の指摘パターンを追加
+5. `docs/_templates/` のテンプレートを必要に応じてカスタマイズ
 
 ## Philosophy
 

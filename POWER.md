@@ -28,6 +28,11 @@ SuperKiroは、チーム開発におけるナレッジ蓄積と仕様駆動開�
 `steering/` ディレクトリの内容を `.kiro/steering/` にコピーしてください。
 既存のsteeringファイルがある場合はマージしてください。
 
+初回は以下も実施してください。
+
+1. `steering/initial-setup.md` に沿ってヒアリング
+2. `steering/project-profile.md` に回答を残す
+
 ### Step 3: Install hooks
 
 `hooks/` ディレクトリのJSONファイルを `.kiro/hooks/` にコピーしてください。
@@ -41,6 +46,7 @@ cp -r docs/* docs/
 ### Step 4: Customize for your project
 
 `steering/coding-standards.md` をプロジェクトの規約に合わせて編集してください。
+レビュー方式に合わせて、`steering/review-rules.md` も調整してください。
 
 ## Workflows
 
