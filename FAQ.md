@@ -110,7 +110,7 @@ Kiro Hooksは以下の2種類のアクションを実行できます:
 | ライブラリの使い方 | `docs/libraries/` |
 | 機能単位のドキュメント | `docs/features/{feature}/` |
 | フェーズ管理 | `docs/project/phases/` |
-| 下書き・検討中 | `docs/draft/` |
+| 下書き・検討中 | `docs/drafts/` |
 
 ### Q: `steering/` と `docs/` の違いは？
 
@@ -186,5 +186,5 @@ Phase (大分類: プロジェクトの大きな区切り)
 ### Q: ファイルが増えすぎて管理できない
 
 - 古いPhaseのドキュメントはアーカイブを検討
-- `docs/draft/` の整理を定期的に実施
+- `docs/drafts/` の整理を定期的に実施
 - 命名規則を統一（日付prefix推奨: `YYYY-MM-DD-`）
