@@ -21,8 +21,16 @@ SuperKiroは、チーム開発におけるナレッジ蓄積と仕様駆動開�
 | ドキュメント | 内容 |
 |--------------|------|
 | [QuickStart.md](./QuickStart.md) | 5分で始めるガイド |
+| [Onboarding.md](./Onboarding.md) | 新メンバー向け運用ガイド |
 | [FAQ.md](./FAQ.md) | よくある質問 |
 | [BestPractices.md](./BestPractices.md) | 大規模プロジェクト向けTips |
+
+### 運用チェックリスト
+
+| ドキュメント | 対象 |
+|--------------|------|
+| [member-checklist.md](./docs/_templates/member-checklist.md) | メンバー向け（PR作成前/週次） |
+| [leader-checklist.md](./docs/_templates/leader-checklist.md) | リーダー向け（運用状況確認） |
 
 ## Onboarding
 
