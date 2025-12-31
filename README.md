@@ -68,9 +68,58 @@ SuperKiro/
     └── learning/         # 振り返り
 ```
 
+### docs/ 配下フォルダの補足（何をどこに書くか）
+
+`docs/` は「後から検索できる形で知見を残す」ための置き場所です。詳細な方針は `steering/knowledge-workflow.md` を参照してください。
+
+#### `docs/drafts/`（下書き）
+
+- 何を書くか: まだ完成していないアイデアや検討中の内容の下書き
+- テンプレート: なし（自由記述）
+
+#### `docs/project/phases/`（フェーズ管理）
+
+- 何を書くか: フェーズ単位の目標/意思決定/振り返り（Keep/Problem/Try など）
+- テンプレート: `docs/_templates/phase/`
+- 例:
+
+```text
+docs/project/phases/phase-1-mvp/retrospective.md
+```
+
+#### `docs/patterns/`（実装パターン）
+
+- 何を書くか: 再利用できる設計・実装の型、ハマりどころと回避策
+- テンプレート: `docs/_templates/pattern.md`
+- 例:
+
+```text
+docs/patterns/error-handling.md
+```
+
+#### `docs/libraries/`（ライブラリTips）
+
+- 何を書くか: ライブラリの基本的な使い方、プロジェクト内の使用例、注意点
+- テンプレート: `docs/_templates/library.md`
+- 例:
+
+```text
+docs/libraries/react-hook-form.md
+```
+
+#### `docs/learning/`（振り返り・学び）
+
+- 何を書くか: 週次/隔週の振り返り、学びの要約、次にやること
+- テンプレート: `docs/_templates/weekly-retrospective.md`
+- 例:
+
+```text
+docs/learning/weekly-retrospective.md
+```
+
 ## Usage
 
-### トラブルシューティングを記録
+### トラブルシューティングを記録する例
 
 ```markdown
 # docs/troubleshooting/2025-01-15-prisma-connection.md
@@ -85,7 +134,7 @@ Prisma Client が接続プールを使い果たす
 prisma.ts で singleton パターンを使用
 ```
 
-### レビュー指摘を蓄積
+### レビュー指摘を蓄積する例
 
 ```markdown
 # docs/reviews/tags/error-handling.md
