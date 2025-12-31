@@ -141,7 +141,13 @@ docs/learning/weekly-retrospective.md
 
 ## Usage
 
-### トラブルシューティングを記録する例
+SuperKiroは「同じことを二度調べない」ために、以下の3つの記録を推奨しています。
+
+### 1. トラブルシューティング記録
+
+**目的**: エラーを解決したら記録し、次に同じ問題が起きたときに即座に解決できるようにする
+
+**いつ書く？**: バグ修正、エラー解決、ハマりポイントを乗り越えたとき
 
 ```markdown
 # docs/troubleshooting/2025-01-15-prisma-connection.md
@@ -156,7 +162,11 @@ Prisma Client が接続プールを使い果たす
 prisma.ts で singleton パターンを使用
 ```
 
-### レビュー指摘を蓄積する例
+### 2. レビュー指摘の蓄積
+
+**目的**: PRレビューで受けた指摘を記録し、次回から同じ指摘を受けないようにする
+
+**いつ書く？**: レビューで指摘を受けたとき、または自分で「これは他の人もやりそう」と思ったとき
 
 ```markdown
 # docs/reviews/tags/error-handling.md
@@ -166,7 +176,13 @@ prisma.ts で singleton パターンを使用
 - 対策: 最低限 console.error を入れる
 ```
 
-### イテレーション記録
+### 3. イテレーション記録（機能の変更履歴）
+
+**目的**: 機能の変更履歴を Before/After で記録し、「なぜこうなっているか」を後から追跡できるようにする
+
+**いつ書く？**: 機能を追加・改善したとき（PRマージ後など）
+
+**イテレーションとは？**: 機能のバージョンアップの記録です。v0.1 → v0.2 → v0.3 と改善を重ねる様子を残します。
 
 ```markdown
 # docs/features/user-auth/iterations/v0.2-oauth-added.md
@@ -175,93 +191,82 @@ prisma.ts で singleton パターンを使用
 - メール+パスワードのみ
 - 離脱率: 35%
 
-## After  
+## After
 - Google/GitHub OAuth追加
 - 離脱率: 18%
+
+## 学び
+- OAuth導入でUXが大幅改善
+- 次はパスワードレス認証を検討
 ```
 
-### PRの運用例（チェック → レビュー知見化 → 次回改善）
+---
 
-#### PRを作る前（最低限）
+## PR運用ワークフロー
+
+PRベースで開発している場合の推奨ワークフローです。
+
+### PRを作る前
+
+**目的**: 過去の指摘を確認し、同じミスを繰り返さない
 
 1. `docs/reviews/tags/` を確認（同じ指摘を繰り返さないため）
 2. 変更が機能単位なら、該当の `docs/features/{feature}/` を更新
 3. 変更が大きい場合は、イテレーション記録を残す
 
-例:
+### レビューで指摘を受けたら
 
-```text
-docs/reviews/tags/react-hooks.md
-docs/features/user-auth/README.md
-docs/features/user-auth/changelog.md
-docs/features/user-auth/iterations/v0.3-refresh-token.md
-```
-
-#### レビューで指摘を受けたら（次回の自動回避に繋げる）
+**目的**: 指摘を資産化し、チーム全体の品質向上につなげる
 
 1. 指摘が汎用的なら `docs/reviews/tags/{category}.md` に追記
 2. 頻出化しているなら `steering/review-rules.md` にも反映
 
-例（レビュー指摘の蓄積）:
+### マージ後
 
-````markdown
-# docs/reviews/tags/naming.md
-
-## 指摘: booleanの命名
-
-### 問題のコード
-```ts
-const open = true;
-```
-
-### 修正後のコード
-```ts
-const isOpen = true;
-```
-````
-
-#### マージ後（またはPR作成直前）
+**目的**: 解決した問題や得た知見を記録し、チームで共有する
 
 1. 解決した問題があれば `docs/troubleshooting/` に残す
 2. 再利用できる実装なら `docs/patterns/` に残す
 3. 変更点の意図・影響を `docs/features/{feature}/changelog.md` に残す
 
-### 新機能を追加するときの手順例（Spec → 実装 → ドキュメント）
+---
 
-#### 1) 仕様（Spec）を用意
+## 新機能追加の流れ
 
-- `.kiro/specs/{feature}/requirements.md`
-- `.kiro/specs/{feature}/design.md`
+新しい機能を追加するときの推奨手順です。
 
-#### 2) Featureドキュメントの雛形を作成
+### Step 1: 仕様（Spec）を用意
 
-テンプレート:
-
-- `docs/_templates/feature/README.md`
-- `docs/_templates/feature/changelog.md`
-- `docs/_templates/iteration.md`
-
-作成例:
+Kiroの仕様駆動開発に従い、まず仕様を定義します。
 
 ```text
-docs/features/user-auth/README.md
-docs/features/user-auth/changelog.md
-docs/features/user-auth/iterations/v0.1-initial.md
+.kiro/specs/{feature}/requirements.md  # 要件定義
+.kiro/specs/{feature}/design.md        # 設計書
 ```
 
-#### 3) 実装中に起きた問題は、その場で残す
+### Step 2: Featureドキュメントの雛形を作成
+
+```text
+docs/features/user-auth/README.md              # 機能の概要
+docs/features/user-auth/changelog.md           # 変更履歴
+docs/features/user-auth/iterations/v0.1-initial.md  # 最初のイテレーション
+```
+
+テンプレート: `docs/_templates/feature/`, `docs/_templates/iteration.md`
+
+### Step 3: 実装中に起きた問題を記録
 
 ```text
 docs/troubleshooting/YYYY-MM-DD-{issue-name}.md
 ```
 
-#### 4) 実装完了時にイテレーション記録を更新
+### Step 4: 実装完了時にイテレーション記録を更新
 
-`docs/_templates/iteration.md` に沿って、最低限以下を埋めるのがコツです。
+`docs/_templates/iteration.md` を参考に、以下を記録:
 
-- Before / After
+- Before / After（何が変わったか）
 - テスト結果
-- 学び
+- 学び（次に活かせること）
 - 発生した問題（`docs/troubleshooting/` へのリンク）
 
 ## Hooks
