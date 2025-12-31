@@ -20,6 +20,40 @@
 
 ---
 
+## Kiroエージェント
+
+### Q: Kiroにはエージェント機能がありますか？
+
+**はい**。Kiroには以下のエージェント機能があります:
+
+| 機能 | 説明 |
+|------|------|
+| **Autonomous Agent** | セッションを超えてコンテキストを維持。フィードバックを記憶して次回に適用 |
+| **Agent Hooks** | ファイル保存時に自動実行。テスト更新、README更新、セキュリティスキャン等 |
+| **Kiro Powers** | 拡張機能。steering + hooks + MCP servers をパッケージ化（SuperKiroはこれ） |
+| **Kiro CLI** | ターミナルでも同じエージェントを利用可能 |
+
+参考: [Introducing Kiro autonomous agent](https://kiro.dev/blog/introducing-kiro-autonomous-agent/)
+
+### Q: ルールが多くて覚えられません
+
+**覚える必要はありません**。`steering/` にルールを書いておけば、Kiroのエージェントが参照して従ってくれます。
+
+SuperKiroの構成がそのままエージェントをサポートする仕組みになっています:
+
+```
+SuperKiro/
+├── steering/     ← AIへの指示（エージェントが参照）
+├── hooks/        ← 自動化（エージェントが実行）
+└── docs/         ← ナレッジ（エージェントが学習）
+```
+
+### Q: エージェントにドキュメント形式を守らせたい
+
+`steering/` にルールを追加すれば、エージェントが自動的に従います。AI可読なドキュメント形式については `docs/design/ai-readable-docs.md` を参照してください。
+
+---
+
 ## ディレクトリ構造
 
 ### Q: どこに何を書けばいいですか？
