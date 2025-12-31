@@ -69,7 +69,7 @@ PRレビューの指摘を受けたら：
 # YYYY-Www 振り返り
 
 ## 今週学んだこと
-- 
+-
 
 ## 今週解決した問題
 - [[troubleshooting/xxx]]
@@ -78,3 +78,35 @@ PRレビューの指摘を受けたら：
 - [x] troubleshootingに追記した
 - [ ] 新しいパターンをpatternsに追記した
 ```
+
+## 大規模プロジェクト向け: Phase/Stage/SubStage
+
+レガシー移行や長期プロジェクトでは、階層的な進行管理が有効です。
+
+```
+Phase (大分類) → Stage (中分類) → SubStage (小分類) → Feature (PR単位)
+```
+
+### 関連ファイル
+
+| ファイル | 役割 |
+|----------|------|
+| `steering/project-structure.md` | 階層構造の定義 |
+| `steering/current-stage.md` | 現在位置の追跡 |
+| `docs/_templates/phase/` | Phase/Stage/SubStage用テンプレート |
+| `docs/design/artifacts.md` | 成果物分類（AS-IS/TO-BE等） |
+| `docs/design/ai-readable-docs.md` | AI可読ドキュメントガイド |
+
+### SubStage完了時の記録
+
+各SubStage完了時に以下を作成:
+
+| ファイル | 内容 |
+|----------|------|
+| `output.md` | 発見事項・次への申し送り |
+| `artifacts/as-is-source.md` | ソースから読み取った仕様 |
+| `artifacts/as-is-behavior.md` | 動作テストで判明した実態 |
+| `artifacts/to-be.md` | 確定要件 |
+| `artifacts/interview-notes.md` | ヒアリング議事録 |
+
+詳細は [BestPractices.md](../BestPractices.md) を参照してください。
