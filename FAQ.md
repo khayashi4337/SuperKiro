@@ -52,6 +52,50 @@ SuperKiro/
 
 `steering/` にルールを追加すれば、エージェントが自動的に従います。AI可読なドキュメント形式については `docs/design/ai-readable-docs.md` を参照してください。
 
+### Q: Kiro PowerでPythonスクリプトを実行できますか？
+
+**はい、Hooks経由で実行可能です。**
+
+Kiro Hooksは以下の2種類のアクションを実行できます:
+
+| アクションタイプ | 説明 |
+|------------------|------|
+| Agent Prompt | AIエージェントへの指示（自然言語） |
+| Shell Command | シェルコマンド実行（Pythonスクリプト含む） |
+
+例:
+```json
+{
+  "name": "run-python-check",
+  "trigger": "file_saved",
+  "pattern": "**/*.py",
+  "action": {
+    "type": "shell",
+    "command": "python scripts/check.py $FILE"
+  }
+}
+```
+
+### Q: Kiro Powersの構成要素は何ですか？
+
+| 要素 | 内容 |
+|------|------|
+| MCP Server | 外部ツール連携 |
+| Steering Files | AIへのルール定義（Markdown） |
+| Hooks | 自動化トリガー（JSON） |
+
+参考: [Hooks - Kiro Docs](https://kiro.dev/docs/hooks/)
+
+### Q: Hooksのトリガータイプは？
+
+| イベント | 用途例 |
+|----------|--------|
+| ファイル保存時 | Lint実行、テスト更新 |
+| 新規ファイル作成時 | テンプレート適用 |
+| ファイル削除時 | 関連ファイル整理 |
+| プロンプト送信時 | 入力チェック |
+| エージェント完了時 | 結果検証 |
+
 ---
 
 ## ディレクトリ構造

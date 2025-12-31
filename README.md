@@ -1,7 +1,7 @@
 ﻿# SuperKiro 🚀
 
 > チーム開発のためのナレッジ蓄積・仕様駆動開発支援 Kiro Power
-> 
+>
 > Inspired by [SuperClaude](https://github.com/NickBusey/SuperClaude)
 
 ## Overview
@@ -10,8 +10,17 @@ SuperKiroは、開発チームの「調べ直し」「聞き直し」を撲滅�
 
 - ✅ トラブルシューティングの自動記録
 - ✅ PRレビュー指摘の事前チェック
-- ✅ フェーズ/イテレーション管理
+- ✅ フェーズ/イテレーション管理（Phase/Stage/SubStage階層構造）
 - ✅ チームナレッジの資産化
+- ✅ AI可読なドキュメント設計
+
+## Quick Links
+
+| ドキュメント | 内容 |
+|--------------|------|
+| [QuickStart.md](./QuickStart.md) | 5分で始めるガイド |
+| [FAQ.md](./FAQ.md) | よくある質問 |
+| [BestPractices.md](./BestPractices.md) | 大規模プロジェクト向けTips |
 
 ## Installation
 
@@ -48,12 +57,17 @@ cp -r docs/* YOUR_PROJECT/docs/
 SuperKiro/
 ├── POWER.md              # Kiro Power エントリーポイント
 ├── README.md             # このファイル
+├── QuickStart.md         # クイックスタートガイド
+├── FAQ.md                # よくある質問
+├── BestPractices.md      # 大規模プロジェクト向けTips
 ├── steering/             # ステアリングファイル
 │   ├── coding-standards.md
 │   ├── initial-setup.md
 │   ├── project-profile.md
 │   ├── review-rules.md
-│   └── knowledge-workflow.md
+│   ├── knowledge-workflow.md
+│   ├── project-structure.md  # Phase/Stage/SubStage階層定義
+│   └── current-stage.md      # 現在位置の追跡
 ├── hooks/                # 自動化フック
 │   ├── troubleshooting-logger.json
 │   └── review-checker.json
@@ -65,7 +79,8 @@ SuperKiro/
     ├── reviews/tags/     # レビュー指摘パターン
     ├── patterns/         # 実装パターン
     ├── libraries/        # ライブラリTips
-    └── learning/         # 振り返り
+    ├── learning/         # 振り返り
+    └── design/           # 設計ドキュメント
 ```
 
 ### docs/ 配下フォルダの補足（何をどこに書くか）
@@ -116,6 +131,13 @@ docs/libraries/react-hook-form.md
 ```text
 docs/learning/weekly-retrospective.md
 ```
+
+#### `docs/design/`（設計ドキュメント）
+
+- 何を書くか: artifacts分類定義、AI可読ドキュメントガイド
+- 参照:
+  - `docs/design/artifacts.md` - AS-IS/TO-BE等の成果物分類
+  - `docs/design/ai-readable-docs.md` - AI時代のドキュメント設計ガイド
 
 ## Usage
 
